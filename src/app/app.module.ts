@@ -3,16 +3,30 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormPessoaFisicaComponent } from './components/form-pessoa-fisica/form-pessoa-fisica.component';
+import { HeaderComponent } from './components/header/header.component';
+import { AppBarComponent } from './components/app-bar/app-bar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { PessoaFisicaService } from './services/pessoa-fisica/pessoa-fisica.service';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormPessoaFisicaComponent,
+    HeaderComponent,
+    AppBarComponent,
+    FormPessoaFisicaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [PessoaFisicaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

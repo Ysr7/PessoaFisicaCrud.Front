@@ -1,0 +1,49 @@
+<app-header title="Cadastro Pessoa Fisica" description="Preencha os campos abaixo:"></app-header>
+
+<div class="px-5">
+  <form #form="ngForm" [formGroup]="userForm" (submit)="cadastrar()">
+    <div class="input">
+      <label for="nome">Nome</label>
+      <br>
+      <input type="text" class="input" id="nome" formControlName="nome" />
+      <div class="form-text text-danger"
+        *ngIf="userForm.get('nome')?.errors?.required && (form.submitted || userForm.get('nome').touched)">
+        <small style="color: red;">
+          Nome é obrigatório
+        </small>
+      </div>
+    </div>
+
+    <div class="input">
+      <label for="email">E-mail</label>
+      <br>
+      <input type="email" class="input" id="email" formControlName="email" />
+      <div class="form-text text-danger" *ngIf="userForm.get('email')?.errors?.invalidEmail && form.submitted">
+        <small style="color: red;">
+          E-mail inválido
+        </small>
+      </div>
+    </div>
+
+    <div class="input">
+      <label for="idade">Idade </label>
+      <br>
+      <input type="number" class="input" id="idade" formControlName="idade" />
+      <div class="form-text text-danger" *ngIf="
+          (userForm.get('idade')?.errors?.min || userForm.get('idade').errors?.max) && form.submitted
+        ">
+        <small style="color: red;">
+          A idade deve estar entre 0 e 90 anos
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group d-flex justify-content-end">
+      <button class="button" type="submit" (click)="cadastrar()"
+        [disabled]="userForm.invalid && form.submitted">
+        Salvar
+      </button>
+    </div>
+
+  </form>
+</div>
