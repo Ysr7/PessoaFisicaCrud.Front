@@ -46,4 +46,40 @@
     </div>
 
   </form>
-</div>
+
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Idade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pessoas of pessoasFisicas">
+          <td>{{pessoas.nome}}</td>
+          <td>{{pessoas.email}}</td>
+          <td>{{pessoas.idade}}</td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-outline-warning mb-1 btn-sm">
+                Atualizar
+              </button>
+              {{' '}}
+              <button class="btn btn-outline-danger mb-1 btn-sm">
+                Atualizar
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+  </div>
+
+

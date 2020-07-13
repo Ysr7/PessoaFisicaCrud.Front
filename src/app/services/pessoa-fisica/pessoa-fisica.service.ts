@@ -18,8 +18,13 @@ export class PessoaFisicaService extends BaseHttp  {
   // cadastrar = (pessoaFisica: PessoaFisicaModel, success: (result: any) => void): void => {
   //   this.http.post(`http://localhost:5010/PessoasFisicas/`, pessoaFisica).subscribe((result) => success(result));
   // }
-  
+
   cadastrar = (pessoaFisica: PessoaFisicaModel, success: (result: any) => void): void => {
     this.post(`http://localhost:5010/pessoasFisicas`, pessoaFisica, success);
   }
+
+  listar = (id: number, success: (result: any) => void): void => {
+    this.get(`http://localhost:5010/pessoasFisicas/${id}`, success)
+  }
+
 }

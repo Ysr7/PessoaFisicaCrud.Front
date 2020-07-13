@@ -14,14 +14,17 @@ import { PessoaFisicaService } from 'src/app/services/pessoa-fisica/pessoa-fisic
 export class FormPessoaFisicaComponent implements OnInit {
   userForm: FormGroup;
   showResults = false;
+  pessoasFisicas : PessoaFisicaModel[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private pessoaFisica: PessoaFisicaService
+    private pessoaFisicaService: PessoaFisicaService
   ) { }
 
   ngOnInit(): void {
     this.prepararForm();
+    this.carregar(1);
+
  }
 
   prepararForm(): void {
@@ -34,9 +37,13 @@ export class FormPessoaFisicaComponent implements OnInit {
   }
 
   cadastrar(): void{
-
-    this.pessoaFisica.cadastrar(this.userForm.getRawValue(), () => {
+    this.pessoaFisicaService.cadastrar(this.userForm.getRawValue(), () => {
     alert('Cadastro com sucesso');
     });
   }
+
+  carregar = (id: number): void => {
+    this.pessoaFisicaService.listar(id, (response) => this.pessoasFisicas = response);
+  }
+
 }

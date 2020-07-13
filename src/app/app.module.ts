@@ -11,13 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { PessoaFisicaService } from './services/pessoa-fisica/pessoa-fisica.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     FormPessoaFisicaComponent,
     HeaderComponent,
     AppBarComponent,
-    FormPessoaFisicaComponent
+    FormPessoaFisicaComponent,
+
   ],
   imports: [
     BrowserModule,
