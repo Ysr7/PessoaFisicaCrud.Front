@@ -45,8 +45,8 @@ export class BaseHttp {
         });
     }
 
-    delete<T>(url: string, item: T, success: (result) => void) {
-        this.http.delete(url, item).subscribe(response => {
+    delete<T>(url: string, success: (result) => void) {
+        this.http.delete(url).subscribe(response => {
             success(response);
         });
     }

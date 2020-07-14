@@ -15,16 +15,25 @@ export class PessoaFisicaService extends BaseHttp  {
       super(http);
     }
 
-  // cadastrar = (pessoaFisica: PessoaFisicaModel, success: (result: any) => void): void => {
-  //   this.http.post(`http://localhost:5010/PessoasFisicas/`, pessoaFisica).subscribe((result) => success(result));
-  // }
-
   cadastrar = (pessoaFisica: PessoaFisicaModel, success: (result: any) => void): void => {
     this.post(`http://localhost:5010/pessoasFisicas`, pessoaFisica, success);
   }
 
-  listar = (id: number, success: (result: any) => void): void => {
-    this.get(`http://localhost:5010/pessoasFisicas/${id}`, success)
+  editar = (id: number, pessoaFisica: PessoaFisicaModel, success: (result: any) => void): void => {
+    this.put(`http://localhost:5010/pessoasFisicas/${id}`, pessoaFisica, success);
+  }
+
+
+  listarPorId = (id: number, success: (result: any) => void): void => {
+    this.get(`http://localhost:5010/pessoasFisicas/${id}`, success);
+  }
+
+  listar = (success: (result: any) => void): void => {
+    this.get(`http://localhost:5010/pessoasFisicas`, success);
+  }
+
+  deletar = (id: number, success: (result: any) => void): void => {
+    this.delete(`http://localhost:5010/pessoasFisicas/${id}`, success);
   }
 
 }

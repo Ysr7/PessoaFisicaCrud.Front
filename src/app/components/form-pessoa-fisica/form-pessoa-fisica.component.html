@@ -39,9 +39,13 @@
     </div>
 
     <div class="form-group d-flex justify-content-end">
-      <button class="button" type="submit" (click)="cadastrar()"
-        [disabled]="userForm.invalid && form.submitted">
+      <button class="button" type="submit" *ngIf="idPessoaFisica == null" (click)="cadastrar()" [disabled]="userForm.invalid && form.submitted">
         Salvar
+      </button>
+    </div>
+    <div class="form-group d-flex justify-content-end">
+      <button class="button" type="submit" *ngIf="idPessoaFisica != null" (click)="editar()" [disabled]="userForm.invalid && form.submitted">
+        Editar
       </button>
     </div>
 
@@ -51,24 +55,28 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>Id</th>
           <th>Nome</th>
           <th>E-mail</th>
           <th>Idade</th>
+          <th>Data de Cadastro</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pessoas of pessoasFisicas">
-          <td>{{pessoas.nome}}</td>
-          <td>{{pessoas.email}}</td>
-          <td>{{pessoas.idade}}</td>
+        <tr *ngFor="let pessoa of pessoasFisicas">
+          <td>{{pessoa.id}}</td>
+          <td>{{pessoa.nome}}</td>
+          <td>{{pessoa.email}}</td>
+          <td>{{pessoa.idade}}</td>
+          <td>{{pessoa.data | date: 'dd/MM/yyyy H:mm:ss'}}</td>
           <td>
             <span class="float-right">
-              <button class="btn btn-outline-warning mb-1 btn-sm">
-                Atualizar
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(pessoa)">
+                Editar
               </button>
               {{' '}}
-              <button class="btn btn-outline-danger mb-1 btn-sm">
-                Atualizar
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(pessoa)">
+                Excluir
               </button>
             </span>
           </td>
@@ -80,6 +88,12 @@
   </div>
 
 
+</div>
+
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Você deseja deletar uma pessoa física?</p>
+    <button type="button" class="btn btn-default" (click)="onCorfirmDelete()">Yes</button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">No</button>
   </div>
-
-
+</ng-template>

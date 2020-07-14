@@ -3,4 +3,5 @@ export class PessoaFisicaModel {
   nome: string;
   email: string;
   idade: number;
+  data: Date;
 }
